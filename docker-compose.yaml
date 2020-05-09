@@ -1,16 +1,19 @@
 version: '3'
 
 services:
-
-  mongo:
-    image: mongo:latest
-    ports:
-      - "27018:27017"
-
   node-service:
     build: 
       context: ./
     ports:
-      - "3003:3001"
+      - "3003:3001" 
     depends_on:
-      - mongo
+      - mongo-db
+    environment:
+      - DATABASE_HOST=mongo-db
+      # DATABASE_HOST=host ip
+
+      mongo-db:
+    image: mongo:latest
+    restart: always
+
+
