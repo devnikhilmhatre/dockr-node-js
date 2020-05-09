@@ -1,4 +1,6 @@
-FROM node:latest
+FROM node:14.2.0-alpine
+
+RUN apk add nano bash
 
 WORKDIR /app
 
